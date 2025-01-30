@@ -1,1 +1,57 @@
+CREATE SCHEMA rh
+
+CREATE TABLE rh.funcionário 
+(
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+	CPF VARCHAR(11) NOT NULL,
+	id_cargo INT NOT NULL,
+	id_contrato INT NOT NULL,
+	data_admissao DATE NOT NULL,
+	data_demissao DATE,
+	salario_atual DECIMAL (10,2),
+	sexo CHAR(1) NOT NULL,
+	data_nasc DATE NOT NULL,
+	CONSTRAINT fk_id_cargo_func FOREIGN KEY (id_cargo) REFERENCES Cargo (id),
+	CONSTRAINT fk_id_contrato_func FOREIGN KEY (id_contrato) REFERENCES Contrato (id),
+);
+
+
+CREATE TABLE rh.cargo
+(
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+	id_depart INT NOT NULL,
+	CONSTRAINT fk_depart_id_cargo FOREIGN KEY (id_depart) REFERENCES Departamento (id)
+	
+);
+-- Inserindo cargos da Administração
+INSERT INTO rh.cargo (nome,id_depart) VALUES
+('Assistente Administrativo',1), ('Analista Administrativo',1), ('Coordenador Administrativo',1), ('Gerente Administrativo',1);
+INSERT INTO rh.cargo (nome,id_depart) VALUES
+('Assistente de RH',2), ('Analista de RH',2), ('Coordenador de RH',2), ('Gerente de RH',2);
+INSERT INTO rh.cargo (nome,id_depart) VALUES
+('Assistente Financeiro',3), ('Analista Financeiro',3), ('Coordenador Financeiro',3), ('Gerente Financeiro',3);
+INSERT INTO rh.cargo (nome,id_depart) VALUES
+('Assistente Comercial',4), ('Vendedor',4), ('Executivo de vendas',4), ('Supervisor de Vendas',4),('Gerente Comercial',4);
+
+SELECT c.nome 
+FROM rh.cargo c
+JOIN rh.departamento d ON c.id_depart = d.id
+WHERE d.id = 4;
+
+
+
+
+--- CRIANDO E POPULANDO A TABELA DEPARTAMENTO
+CREATE TABLE rh.departamento
+(
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(100)
+);
+INSERT INTO rh.Departamento (nome) VALUES 
+('Administração'), ('Recursos Humanos'), ('Financeiro'), ('Comercial'), ('Marketing'), ('Suporte'),
+('Operacional'), ('TI');
+SELECT * FROM rh.departamento
+
 
