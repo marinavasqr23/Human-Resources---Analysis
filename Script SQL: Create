@@ -41,7 +41,27 @@ JOIN rh.departamento d ON c.id_depart = d.id
 WHERE d.id = 4;
 
 
-
+INSERT INTO rh.cargo (nome, id_depart) VALUES
+    ('Diretor de TI', 7),
+    ('Gerente de TI', 7),
+    ('Coordenador de TI', 7),
+    ('Analista de TI', 7),
+    ('Administrador de Banco de Dados', 7),
+    ('Desenvolvedor de Software', 7),
+    ('Engenheiro de Software', 7),
+    ('Analista de Suporte', 7),
+    ('Técnico de Suporte', 7),
+    ('Analista de Segurança da Informação', 7),
+    ('Engenheiro de Segurança da Informação', 7),
+    ('Especialista em Redes', 7),
+    ('DevOps Engineer', 7),
+    ('Cientista de Dados', 7),
+    ('Engenheiro de Dados', 7),
+    ('Analista de Sistemas', 7),
+    ('Tester/QA', 7),
+    ('Scrum Master', 7),
+    ('Product Owner', 7),
+    ('Estagiário de TI', 7);
 
 --- CRIANDO E POPULANDO A TABELA DEPARTAMENTO
 CREATE TABLE rh.departamento
